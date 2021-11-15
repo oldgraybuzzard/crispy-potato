@@ -1,2 +1,1 @@
-# crispy-potato
-e-commerce backend
+# E-commerce Back End Starter Code
