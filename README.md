@@ -37,6 +37,9 @@ This project sets up the backend portion of an E-Commerce website. Express.js wa
   ```
   npm start
   ```
+* Video Walkthrough
+  * https://
+* Screenshots
 
 
 ## Contributors 😃
