@@ -40,7 +40,9 @@ This project sets up the backend portion of an E-Commerce website. Express.js wa
 * Video Walkthrough
   * https://
 * Screenshots
-
+  * https://github.com/oldgraybuzzard/crispy-potato/blob/main/assets/images/getRouteCat.PNG
+  * https://github.com/oldgraybuzzard/crispy-potato/blob/main/assets/images/getRouteProduct.PNG
+  * https://github.com/oldgraybuzzard/crispy-potato/blob/main/assets/images/getRouteTag.PNG
 
 ## Contributors 😃
 [OldgrayBuzzard](https://github.com/OldgrayBuzzard)
