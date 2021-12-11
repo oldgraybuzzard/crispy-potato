@@ -50,15 +50,15 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   Tag.create({
-    tag_name: req.body.tag_name
+    tag_name: req.body.tag_name,
+    product_id: req.body.product_id
   })
   .then(dbTagData => {
-    req.session.save(() => {
-      req.session.id = dbTagData.id,
-      req.session.tag_name = dbTagData.tag_name
+      req.id = dbTagData.id,
+      req.tag_name = dbTagData.tag_name,
+      req.product_id = dbTagData.product_id
 
       res.json(dbTagData);
-    });
   })
     .catch(err => {
       console.log(err);
@@ -98,7 +98,7 @@ router.delete('/:id', (req, res) => {
       res.status(404).json({ message: 'No tag found with this id' });
       return;
     }
-    res.json(dbTagData);
+    res.json({ message: 'Successfully deleted' });
   })
   .catch(err => {
     console.log(err);

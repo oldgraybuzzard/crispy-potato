@@ -56,12 +56,10 @@ router.post('/', (req, res) => {
     category_name: req.body.category_name,
   })
   .then(dbCategoryData => {
-    req.session.save(() => {
-      req.session.category_id = dbCategoryData.id;
-      req.session.category_name = dbCategoryData.category_name;
+          req.category_id = dbCategoryData.id;
+      req.category_name = dbCategoryData.category_name;
 
       res.json(dbCategoryData);
-    });
   }) 
   .catch(err => {
     console.log(err);
@@ -102,7 +100,7 @@ router.delete('/:id', (req, res) => {
       res.status(404).json({ message: 'No category found with this id' });
       return;
     }
-    res.json(dbCategoryData);
+    res.json({ message: 'Successfully deleted' });
   })
   .catch(err => {
     console.log(err);

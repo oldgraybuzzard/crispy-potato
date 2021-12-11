@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
       'product_name',
       'price',
       'stock',
-      'category_id'
+      'category_id',
     ],
     include: [
       {
@@ -70,13 +70,12 @@ router.post('/', (req, res) => {
     category_id: req.body.category_id
   })
     .then((product) => {
-      req.session.save(() => {
-        req.session.product_id = dbProductData.id;
-        req.session.product_name = dbProductData.product_name;
-        req.session.price = dbProductData.price;
-        req.session.stock = dbProductData.stock;
-        req.session.category_id = dbProductData.category_id;
-      })
+        req.product_id = dbProductData.id;
+        req.product_name = dbProductData.product_name;
+        req.price = dbProductData.price;
+        req.stock = dbProductData.stock;
+        req.category_id = dbProductData.category_id;
+
       if (req.body.tagIds.length) {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
@@ -139,7 +138,22 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  // delete one product by its `id` value
+  Product.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(dbProductData => {
+    if (!dbProductData) {
+      res.status(404).json.json({ message: 'No product found with this id' });
+      return
+    }
+    res.json({ message: 'Successfully deleted' });;
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  })
 });
 
 module.exports = router;

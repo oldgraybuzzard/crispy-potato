@@ -1,0 +1,42 @@
+-- DROP DATABASE
+DROP DATABASE IF EXISTS ecommerce_db;
+
+-- CREATE DATABASE
+CREATE DATABASE ecommerce_db;
+
+USE ecommerce_db;
+DROP TABLE IF EXISTS product_tag;
+DROP TABLE IF EXISTS tag;
+DROP TABLE IF EXISTS product;
+DROP TABLE IF EXISTS category;
+
+
+CREATE TABLE category (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  category_name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE product (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  product_name VARCHAR(50) NOT NULL,
+  price DECIMAL(8,2) NOT NULL,
+  stock INTEGER UNSIGNED DEFAULT 10 NOT NULL,
+  category_id INTEGER,
+  INDEX category_ind (category_id),
+  CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE SET NULL
+);
+
+CREATE TABLE tag (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  tag_name VARCHAR(50)
+);
+
+CREATE TABLE product_tag (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  product_id INTEGER,
+  INDEX product_ind (product_id),
+  CONSTRAINT fk_product FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE SET NULL,
+  tag_id INTEGER,
+  INDEX tag_ind (tag_id),
+  CONSTRAINT fk_tag FOREIGN KEY (tag_id) REFERENCES tag(id) ON DELETE SET NULL
+);
