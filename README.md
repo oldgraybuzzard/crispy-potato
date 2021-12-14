@@ -40,7 +40,7 @@ during development the routes were tested using Insomnia Core.
   npm start
   ```
 * Video Walkthrough
-  * https://
+  * https://watch.screencastify.com/v/ZRB9TOoILCErkNfgeA8j
 * Screenshots
   * https://github.com/oldgraybuzzard/crispy-potato/blob/main/assets/images/getRouteCat.PNG
   * https://github.com/oldgraybuzzard/crispy-potato/blob/main/assets/images/getRouteProduct.PNG
